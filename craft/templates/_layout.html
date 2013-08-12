@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<link rel="home" href="{{ siteUrl }}" />
+
+	<!-- Stylesheets -->
+	<link href="{{ siteUrl }}/stylesheets/screen.css" rel="stylesheet" type="text/css" />
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	<div id="container">
+		<header id="header" role="banner">
+			<div class="contain-1100">
+				<nav role="navigation">
+					<ul class="main-nav">
+						<li>
+							<a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About Us
+							</a>
+						</li>
+						<li>
+							<a href="{{ url('officers') }}" {% if craft.request.firstSegment == 'officers' %}class="active"{% endif %}>Officers
+							</a>
+						</li>
+						<li>
+							<a href="{{ url('events') }}" {% if craft.request.firstSegment == 'events' %}class="active"{% endif %}>Events
+							</a>
+						</li>
+						<li>
+							<a href="{{ url('blog') }}" {% if craft.request.firstSegment == 'blog' %}class="active"{% endif %}>Blog
+							</a>
+						</li>
+						<li>
+							<a href="{{ url('internships') }}" {% if craft.request.firstSegment == 'internships' %}class="active"{% endif %}>Internships
+							</a>
+						</li>
+					</ul>
+				</nav>
+			<ul class="account">
+				{% if user %}
+					<li class="welcome-message">Hey, &nbsp;{{ user.firstName }}!</li>
+					<li><a href="{{ logoutUrl }}">Logout</a></li>
+				</ul >
+				{% else %}
+					<li><a href="{{ loginUrl }}">Login</a></li>
+					<li><a href="{{ url('accounts/register') }}">Register</a></li>
+				</ul>
+		{% endif %}
+		</div>
+	</header>
+
+		<main id="content">
+			{% block content %}
+
+			{% endblock %}
+		</main>
+
+
+	</div>
+
+	{% include "inc/_footer" %}
+

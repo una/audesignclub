@@ -1,0 +1,44 @@
+{% extends "_layout" %}
+{% set title = "Login" %}
+
+{% block content %}
+<div class="contain-600">
+	
+{% include "inc/_logohead" %}
+
+<form method="post" action="" accept-charset="UTF-8">
+    <input type="hidden" name="action" value="users/saveProfile">
+    <input type="hidden" name="redirect" value="users/{{ user.username }}">
+    <input type="hidden" name="userId" value="{{ user.id }}">
+
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="fields[firstName]" value="{{ user.firstName }}" placeholder="{{ user.firstName }}">
+
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="fields[lastName]" value="{{ user.lastName }}" placeholder="{{ user.lastName }}">
+
+    <label for="personalImage">Photo</label>
+    <input type="file" id="personalImage" name="fields[personalImage]" value="{{ entry.personalImage }}">
+
+    <label for="graduatingClass">Graduating Class</label>
+    <input type="text" id="graduatingClass" name="fields[graduatingClass]" value="{{ user.graduatingClass }}" placeholder="{{ user.graduatingClass }}">
+
+    <label for="major">Major</label>
+    <input type="text" id="major" name="fields[major]" value="{{ user.major }}" placeholder="{{ user.major }}">
+
+    <label for="position">Club Position</label>
+    <input type="text" id="position" name="fields[position]" value="{{ user.position }}" placeholder="{{ user.position }}">
+
+    <label for="personalWebsite">Personal Website</label>
+    <input type="text" id="website" name="fields[personalWebsite]" value="{{ user.personalWebsite }}" placeholder="{{ user.personalWebsite }}">
+
+    <label for="bio">Bio</label>
+    <textarea id="bio" name="fields[bio]">{{ user.bio }}</textarea>
+
+    <input type="submit" value="Save Profile">
+
+</form>
+</div>
+{% endblock %}
+
+

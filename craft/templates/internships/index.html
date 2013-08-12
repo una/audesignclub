@@ -1,0 +1,23 @@
+{% extends "_layout" %}
+{% set title = "Internships" %}
+
+{% block content %}
+
+<div class="contain-600">
+
+	{% include "inc/_logohead" %}
+
+	{% for internPost in craft.entries.section('internships').status('live,pending').find() %}
+		<article class="pane">
+			<h2 role="heading"><a href="{{ internPost.url }}">{{ internPost.title }}</a></h2>
+			<p>Posted on {{ entry.postDate|date('M d, Y') }}</p>
+			{{ internPost.body.getPage(1) }}
+			<p><a href="{{ internPost.url }}">Continue reading…</a></p>
+		</article>
+	{% else %}
+		<div class="pane">
+			<p>No posts yet :(</p>
+		</div>
+</div>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+.officer-list{
+	.officer{
+		display: inline-block;
+		width: 200px;
+		height: 200px;
+		img{
+			@include border-radius(50%);
+		}
+	}
+}
+
+
+
+.officer-page{
+	figure{
+		max-width: 100%;
+		img{
+			width:100%;
+			height:100%;
+			
+		}
+	} 
+}

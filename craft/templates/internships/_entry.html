@@ -1,0 +1,40 @@
+{% extends "_layout" %}
+{% set title = entry.title %}
+
+{% block content %}
+
+<div class="contain-600">
+
+{% include "inc/_logohead" %}
+
+<h1> {{entry.title}} </h1>
+	<div class="intro">
+		<h2 class="blog-info">Posted on {{ entry.postDate|date('M d, Y') }}
+		</h2>
+	</div>
+	
+	<article class="pane" role="article">
+	<h3><span class="company-name">{{entry.companyName}}</span> 
+		is looking for a
+		<span class="intern-role">{{entry.internRole}}!</span>
+	</h3>
+	<ul>
+		<li>Location: <span class="location">{{entry.companyLocation}}</span></li>
+		<li>Compensation:  <span class="compensation">{{entry.compensationType}}</span> of
+		{% if entry.compensationType != "unpaid" %}
+		<span class="wage">
+			${{entry.compensationAmmount}}{% if entry.compensationType == "hourly" %}/hour 
+		</span>
+				{% endif %}
+		{% endif %}
+		</li>
+		<li>Deadline to Apply: {{entry.deadline}}</li>
+	</ul>
+
+		<p>{{ entry.body }}</p>
+
+	<p class="internship-contact">If you're interested, contact <span class="contact">{{entry.contactPerson}}</span> at <span class="email">{{entry.contactEmail}}</span> by <span class="deadline">{{entry.deadline}}.</span></p>
+	</article>
+</div>
+
+{% endblock %}

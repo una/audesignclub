@@ -1,0 +1,23 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # This template gets loaded whenever someone access http://example.com
+ # with no URI, because it’s located in the root of your craft/templates/
+ # folder and it’s called index.html. Simple.
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<h1>{{ homepage.heading }}</h1>
+
+	{{ homepage.body }}
+
+	<h2>Recent News</h2>
+	<ul>
+		{% for entry in craft.entries.section('news').limit(5).find() %}
+			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

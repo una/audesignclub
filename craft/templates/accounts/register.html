@@ -1,0 +1,42 @@
+{% extends "_layout" %}
+{% set title = "Create an Account" %}
+{% import "inc/forms" as forms %}
+
+{% block content %}
+
+<div class="contain-600">
+	
+	{% include "inc/_logohead" %}
+
+	<h1>{{ title }}</h1>
+	<h2> Just three simple steps!</h2>
+
+	<form class="form" method="post" action="" accept-charset="UTF-8">
+		<input type="hidden" name="action" value="users/saveUser">
+		<input type="hidden" name="redirect" value="">
+
+		<h3 class="first"><label for="username">1. Username</label></h3>
+		<input id="username" class="text fulltext" type="text" name="username"
+			{%- if account is defined %} value="{{ account.username }}"{% endif %}>
+
+		{% if account is defined %}
+			{{ forms.errorList(account.getErrors('username')) }}
+		{% endif %}
+
+		<h3><label for="email">2. Email</label></h3>
+		<input id="email" class="text fulltext" type="text" name="email"
+			{%- if account is defined %} value="{{ account.email }}"{% endif %}>
+
+		{% if account is defined %}
+			{{ forms.errorList(account.getErrors('email')) }}
+		{% endif %}
+
+		<h3><label for="password">3. Password</label></h3>
+		<input id="password" class="text fulltext" type="password" name="password">
+
+		<div class="register-button">
+			<input class="submit" type="submit" value="Register" action="alert('Beautiful! Now youll recieve an email shortly to confirm!')">
+		</div>
+	</form>
+</div>
+{% endblock %}

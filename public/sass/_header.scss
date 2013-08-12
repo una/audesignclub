@@ -1,0 +1,79 @@
+header{
+	background: $black;
+	height: 30px;
+	width:100%;
+}
+	
+.main-nav a,
+.account a{
+	color: white;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.welcome-message{
+	color: $peach;
+}
+
+.main-nav,
+.account {
+	li{
+	display: inline;
+	float: left;
+	padding: 3px 15px 2px;
+	}
+}
+
+.main-nav li{
+	@include transition(background, .5s);
+	&:first-child:hover{
+		background: $orange;
+	}
+	&:nth-child(2):hover{
+		background: $blue;
+	}
+	&:nth-child(3):hover{
+		background: $peach;
+	}
+	&:nth-child(4):hover{
+		background: $lavendar;
+	}
+	&:nth-child(5):hover{
+		background: $light-blue;
+	}
+
+}
+
+.account{
+	float: right;
+}
+
+nav{
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+/* FOOTER */
+footer{
+	background: white;
+	bottom: 0;
+	color: #61d0f7;
+	font-size: 12px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	a{
+		color: $peach;
+	}
+
+
+//make the footer pos: absolute if the window height is longer than the content, if it's not, make footer pos :relative
+
+
+
+
+
+
+}

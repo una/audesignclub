@@ -1,0 +1,23 @@
+{% extends "_layout" %}
+{% set title = "Blog" %}
+
+{% block content %}
+
+<div class="contain-600">
+
+	{% include "inc/_logohead" %}
+
+	{% for blogPost in craft.entries.section('blog').status('live,pending').find() %}
+		<article class="pane">
+			<h2 role="heading"><a href="{{ blogPost.url }}">{{ blogPost.title }}</a></h2>
+			<p>Written by {{ entry.author }} on {{ entry.postDate|date('M d, Y') }}</p>
+			{{ blogPost.body.getParagraph(1) }}
+			<p><a href="{{ blogPost.url }}">Continue reading…</a></p>
+		</article>
+	{% else %}
+		<div class="pane">
+			<p>No posts yet :(</p>
+		</div>
+</div>
+	{% endfor %}
+{% endblock %}

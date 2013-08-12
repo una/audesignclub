@@ -1,0 +1,121 @@
+// COLORS
+.large-logo{
+	height: 130px;
+	max-width: 600px;
+	margin: 120px auto 40px;
+	&.interior{
+		margin: 40px auto;
+		width: 100%;
+		padding-bottom: 20px;
+		border-bottom: 1px solid $black;
+	}
+	.logo-mark,
+	.logo-text {
+		background-repeat: no-repeat;
+		float: left;
+		height: 100%;
+	}
+	.logo-mark{
+	background-image: image-url("assets/AUD_logo.svg");
+	width: 40%;
+	}
+	.logo-text{
+	background-image: image-url("assets/AUDC_logo_text.svg");
+	margin-top: 15px;
+	width: 60%;
+	}
+}
+
+ul.main-icons{
+	text-align: center;
+	li{
+	display: inline-block;
+	margin: 12px;
+	position: relative;	
+		a{
+			width:90px;
+			min-height:90px;
+			background-repeat: no-repeat;
+			display: block;
+			text-decoration: none;
+			color: white;
+		}
+	}
+}
+
+.calendar{
+	background-image: image-url("icons/calendar_icon.svg");
+	span{
+		position: absolute;
+		font-weight: 700;
+		left: 20%;
+		bottom: 20%;
+		font-size: 50px;
+	}
+}
+.email{
+	background-image: image-url("icons/email_icon.svg");
+}
+.twitter{
+	background-image: image-url("icons/twitter_icon.svg");
+	height: 104px; //this one is slightly taller than the rest
+	margin-bottom: -5px;
+}
+.blog{
+	background-image: image-url("icons/blog_icon.svg");
+}
+.officers{
+	background-image: image-url("icons/officers_icon.svg");
+}
+
+.pop-out-area {
+	margin: 0 auto;
+	width: 500px;
+}
+
+%content-carat {		
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	content: " ";
+	position: absolute;
+}
+
+.email-form-container {
+	display: none; //temp
+	background: $orange;
+	width: 450px;
+	margin: 0px -90px;
+	
+	&:before {
+		@extend %content-carat;
+		border-bottom: 20px solid $orange;
+		margin-left: 200px;
+		margin-top: -15px;
+	}
+}
+
+.calendar-popout-container {
+	background: $light-blue;
+	width: 350px;
+	margin: 0px -150px;
+		
+	&:before {
+		@extend %content-carat;
+		border-bottom: 20px solid $light-blue;
+		margin-left: 147px;
+		margin-top: -15px;
+	}
+}
+
+.home-title {
+
+}
+
+.home-date {
+	margin-bottom: 1em;
+}
+
+
+
+
+

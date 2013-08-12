@@ -1,0 +1,24 @@
+{% extends "_layout" %}
+{% set title = "Login" %}
+
+{% block content %}
+<div class="contain-600">
+	
+{% include "inc/_logohead" %}
+
+{% if user and user.can('accessCp') %}
+    <h1 id="site-name">{{ siteName }}</h1>
+    <ul id="cp-nav">
+        {% for handle, item in craft.cp.nav %}
+            <li><a href="{{ url('admin/'~handle) }}">{{ item.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% if entry is defined and user.admin %}
+        <a id="edit-entry" href="{{ entry.cpEditUrl }}">Edit this entry</a>
+        <a id="delete-entry" data-id="{{ entry.id }}">Delete this entry</a>
+    {% endif %}
+{% endif %}
+</div>
+{% endblock %}
+
+

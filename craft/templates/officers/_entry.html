@@ -1,0 +1,26 @@
+{% extends "_layout" %}
+
+{% block content %}
+	<article class="officer-page">
+		<figure>
+	   {% if entry.personalImage|length > 0 %}
+		   {% for image in entry.personalImage %}
+		        <img src="{{ image.url }}" height="{{ image.height }}" width="{{ image.width }}" alt="{{ entry.title }}">
+		    {% endfor %}
+		    {% else %}
+	       		<img src="/images/assets/placeholder.jpg">
+	    {% endif %}
+	    </figure>
+		<h1>{{ entry.firstName }} {{ entry.lastName }}</h1>
+		<h2>{{ entry.position }}</h2>
+
+		{% if entry.bio %}
+			<div class="description">
+				<h2>About {{ entry.title }}</h2>
+				<p>{{ entry.bio }}</p>
+				<a href=" http://{{ entry.personalWebsite }}" target="_blank" class="website-link"> Click here to see more work </a>
+			</div>
+		{% endif %}
+
+	</article>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "_layout" %}
+
+{% block content %}
+	
+<a href="{{ siteUrl }}" alt="{{ siteName }}" role="banner">
+	<h1 class="large-logo home">
+		<div class="logo-mark"></div>
+		<div class="logo-text"></div>
+	</h1>
+</a>
+
+<ul class="main-icons" role="menu">
+	<li> <a href="{{ url('events') }}"class="calendar icon">
+		<span>	
+		{{ now|date("d") }} 
+		</span>
+	</a></li>
+	<li> <a href="{{ url('email') }}" class="email icon"></a> </li>
+	<li> <a href="http://twitter.com/AUDesignClub" target="_blank" class="twitter icon"></a></li>
+	<li> <a href="{{ url('blog') }}" class="blog icon"></a></li>
+	<li> <a href="{{ url('officers') }}" class="officers icon"></a></li>
+</ul>
+<section class="pop-out-area">
+	<div class="calendar-popout-container">
+		<h2> Upcoming Events: </h2>
+		<ul>
+		{% for entry in craft.entries.section('Events').limit(3).find() %}
+		<li>
+		<a class="home-title" href='{{ entry.url }}'>{{ entry.title }}</a>
+		</li>
+		<li>
+			<h4 class="home-date">{{ entry.eventDate|date("D F d, Y") }}</h4>
+		</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="email-form-container">
+		<h2>Contact Us!</h2>
+			{% include "_includes/contact_form" %}
+	</div>
+
+</section>
+
+
+{% endblock %}

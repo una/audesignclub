@@ -1,0 +1,28 @@
+{% extends "_layout" %}
+{% set title = "Officers" %}
+
+{% block content %}
+	<h1>Meet Our E-Board!</h1>
+	<ul class= "officer-list">
+	{% for entry in craft.entries.section('officers').find() %}
+	<li class= "officer thumb">
+		<a href="{{ entry.url }}">
+			<figure>
+			{% if entry.personalImage|length > 0 %}
+				{% for asset in entry.personalImage %}
+				<img src="{{ asset.getUrl('headshotThumb') }}" width="{{ asset.getWidth('headshotThumb') }}" height="{{ asset.getHeight('headshotThumb') }}" alt="{{ entry.title }}">
+				{% endfor %}
+			{% else %}
+	       		<img src="/images/assets/placeholder.jpg" width="100px" height="100px" alt="{{ entry.title }}" >
+			{% endif %}
+			</figure>
+
+			<figurecaption>
+			<h1 class="officer-name thumb">{{ entry.firstName }}</h1>
+			<h2 class="officer-position thumb">{{ entry.position }}</h2>
+			</figurecaption>
+		</a>
+	</li>
+	{% endfor %}
+	</ul>
+{% endblock %}
